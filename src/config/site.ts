@@ -30,8 +30,8 @@ export const SITE_CONFIG = {
     title: 'GOLIS | Website Development & Digital Solutions',
     description:
       'GOLIS creates modern, responsive websites and digital solutions for local businesses and growing companies.',
-    ogImage: 'https://golis.in/og-image.jpg',
-    url: 'https://golis.in',
+    ogImage: 'https://golis2.onrender.com/og-image.jpg',
+    url: 'https://golis2.onrender.com',
   },
 } as const;
 
