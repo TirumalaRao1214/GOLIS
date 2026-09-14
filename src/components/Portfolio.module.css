@@ -1,0 +1,233 @@
+.section { background: var(--bg-2); }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+/* ─── Card ───────────────────────────────────────────────────────────────── */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.card:hover {
+  border-color: rgba(255,255,255,.18);
+  box-shadow: 0 24px 64px rgba(0,0,0,.5);
+  transform: translateY(-6px);
+}
+
+/* ─── Preview ────────────────────────────────────────────────────────────── */
+.preview {
+  position: relative;
+  padding: 24px 24px 0;
+  min-height: 220px;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+}
+
+.previewGlow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+/* ─── Browser mockup ─────────────────────────────────────────────────────── */
+.browser {
+  width: 100%;
+  background: var(--bg-3);
+  border-radius: 8px 8px 0 0;
+  border: 1px solid var(--border-2);
+  border-bottom: none;
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+  box-shadow: 0 8px 32px rgba(0,0,0,.4);
+}
+
+.browserBar {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 8px 12px;
+  background: var(--bg-2);
+  border-bottom: 1px solid var(--border);
+}
+
+.browserBar span {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--border-2);
+}
+
+.browserUrl {
+  flex: 1;
+  margin-left: 8px;
+  font-size: 10px;
+  color: var(--text-3);
+  background: var(--surface);
+  padding: 2px 8px;
+  border-radius: 4px;
+  border: 1px solid var(--border);
+}
+
+.browserContent { padding: 10px; }
+
+.browserNav {
+  height: 6px;
+  background: var(--surface-2);
+  border-radius: 3px;
+  margin-bottom: 8px;
+}
+
+.browserHero {
+  border-radius: 6px;
+  padding: 14px;
+  margin-bottom: 8px;
+}
+
+.browserTitle {
+  height: 10px;
+  border-radius: 4px;
+  width: 60%;
+  margin-bottom: 6px;
+}
+
+.browserSub {
+  height: 6px;
+  background: rgba(255,255,255,.12);
+  border-radius: 3px;
+  width: 80%;
+  margin-bottom: 8px;
+}
+
+.browserBtn {
+  height: 18px;
+  width: 70px;
+  border-radius: 4px;
+}
+
+.browserCards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+}
+
+.browserCard {
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.browserCardImg { height: 30px; }
+
+.browserCardLine {
+  height: 5px;
+  background: var(--surface-2);
+  border-radius: 3px;
+  margin: 6px 6px 4px;
+}
+
+.browserCardLineSm {
+  height: 4px;
+  background: var(--surface);
+  border-radius: 3px;
+  margin: 0 6px 6px;
+  width: 60%;
+}
+
+/* ─── Body ───────────────────────────────────────────────────────────────── */
+.body { padding: 28px; }
+
+.category {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  margin-bottom: 8px;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--text);
+  margin-bottom: 10px;
+  letter-spacing: -.02em;
+}
+
+.desc {
+  font-size: 14px;
+  color: var(--text-2);
+  line-height: 1.7;
+  margin-bottom: 16px;
+}
+
+.features {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 20px;
+}
+
+.feature {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--text-2);
+}
+
+.featureCheck { font-weight: 700; }
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.tag {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 100px;
+  background: var(--surface-2);
+  border: 1px solid var(--border-2);
+  color: var(--text-2);
+}
+
+.link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--accent-2);
+  transition: gap var(--transition);
+}
+
+.link svg { width: 14px; height: 14px; }
+.link:hover { gap: 10px; }
+
+@media (max-width: 1024px) {
+  .grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 640px) {
+  .grid { grid-template-columns: 1fr; }
+}

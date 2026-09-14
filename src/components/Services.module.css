@@ -1,0 +1,120 @@
+.section {
+  background: var(--bg);
+  overflow: hidden;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-bottom: 64px;
+}
+
+.card {
+  position: relative;
+  border-radius: var(--radius-lg);
+  cursor: default;
+  transform-style: preserve-3d;
+}
+
+.cardInner {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 36px 30px;
+  height: 100%;
+  position: relative;
+  z-index: 1;
+  transition: border-color var(--transition), background var(--transition);
+  overflow: hidden;
+}
+
+.card:hover .cardInner {
+  border-color: rgba(37,99,235,.4);
+  background: var(--surface-2);
+}
+
+.cardGlow {
+  position: absolute;
+  inset: -1px;
+  border-radius: var(--radius-lg);
+  background: radial-gradient(circle at 50% 50%, rgba(37,99,235,.15), transparent 70%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.card:hover .cardGlow { opacity: 1; }
+
+.number {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .14em;
+  color: var(--accent-2);
+  margin-bottom: 16px;
+  font-variant-numeric: tabular-nums;
+}
+
+.iconWrap {
+  width: 44px; height: 44px;
+  background: rgba(37,99,235,.12);
+  border: 1px solid rgba(37,99,235,.2);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  color: var(--accent-2);
+  transition: background var(--transition), border-color var(--transition), transform var(--transition);
+}
+
+.iconWrap svg { width: 22px; height: 22px; }
+
+.card:hover .iconWrap {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+  transform: scale(1.08);
+}
+
+.title {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 10px;
+  line-height: 1.3;
+}
+
+.desc {
+  font-size: 14px;
+  color: var(--text-2);
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+.arrow {
+  width: 32px; height: 32px;
+  color: var(--accent-2);
+  opacity: 0;
+  transform: translateX(-8px);
+  transition: opacity var(--transition), transform var(--transition);
+}
+
+.arrow svg { width: 100%; height: 100%; }
+
+.card:hover .arrow {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.cta { text-align: center; }
+
+@media (max-width: 900px) {
+  .grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 560px) {
+  .grid { grid-template-columns: 1fr; }
+  .cardInner { padding: 28px 24px; }
+}

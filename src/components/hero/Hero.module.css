@@ -1,0 +1,228 @@
+.hero {
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  padding-top: var(--nav-h);
+}
+
+/* ─── 3D Canvas ──────────────────────────────────────────────────────────── */
+.canvas {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.canvas canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* ─── Gradient fade at bottom ───────────────────────────────────────────── */
+.gradient {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 280px;
+  background: linear-gradient(to top, var(--bg) 0%, transparent 100%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* ─── Content ────────────────────────────────────────────────────────────── */
+.content {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  padding-block: 80px;
+  min-height: calc(100svh - var(--nav-h));
+}
+
+.left {
+  max-width: 580px;
+}
+
+/* ─── Hero logo ──────────────────────────────────────────────────────────── */
+.heroLogo {
+  margin-bottom: 32px;
+  animation: fadeSlideUp 0.8s ease both;
+}
+
+/* ─── Headline ───────────────────────────────────────────────────────────── */
+.headline {
+  font-size: clamp(44px, 6vw, 76px);
+  font-weight: 900;
+  line-height: 1.04;
+  letter-spacing: -.04em;
+  color: var(--text);
+  margin-bottom: 24px;
+  animation: fadeSlideUp 0.8s ease 0.1s both;
+}
+
+.accentText {
+  background: linear-gradient(135deg, var(--accent-2) 0%, #818cf8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ─── Sub ─────────────────────────────────────────────────────────────────── */
+.sub {
+  font-size: 17px;
+  color: var(--text-2);
+  line-height: 1.8;
+  max-width: 480px;
+  margin-bottom: 38px;
+  animation: fadeSlideUp 0.8s ease 0.2s both;
+}
+
+/* ─── CTAs ───────────────────────────────────────────────────────────────── */
+.ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-bottom: 36px;
+  animation: fadeSlideUp 0.8s ease 0.3s both;
+}
+
+.ctaPrimary {
+  position: relative;
+  overflow: hidden;
+}
+
+.ctaPrimary::after {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--accent-2), #818cf8);
+  z-index: -1;
+  opacity: 0;
+  transition: opacity var(--transition);
+}
+
+.ctaPrimary:hover::after { opacity: 0.3; }
+
+/* ─── Trust strip ────────────────────────────────────────────────────────── */
+.trust {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-3);
+  animation: fadeSlideUp 0.8s ease 0.4s both;
+}
+
+.dot { color: var(--border-2); margin-inline: 4px; }
+
+/* ─── Scroll hint ────────────────────────────────────────────────────────── */
+.scrollHint {
+  position: absolute;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  z-index: 3;
+  animation: fadeSlideUp 1s ease 0.8s both;
+}
+
+.scrollLine {
+  width: 2px;
+  height: 48px;
+  background: linear-gradient(to bottom, transparent, var(--accent-2), transparent);
+  border-radius: 2px;
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+
+.scrollText {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--text-3);
+}
+
+/* ─── CSS Fallback ───────────────────────────────────────────────────────── */
+.fallback {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(ellipse 70% 60% at 65% 45%, rgba(37,99,235,.12) 0%, transparent 70%);
+}
+
+.fallbackOrb {
+  width: 340px; height: 340px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 40% 35%, rgba(37,99,235,.25), rgba(37,99,235,.05));
+  border: 1px solid rgba(37,99,235,.2);
+  animation: orbFloat 4s ease-in-out infinite;
+}
+
+.fallbackRing {
+  position: absolute;
+  width: 480px; height: 480px;
+  border-radius: 50%;
+  border: 1px solid rgba(37,99,235,.15);
+  animation: ringRotate 12s linear infinite;
+}
+
+.fallbackRing2 {
+  position: absolute;
+  width: 580px; height: 580px;
+  border-radius: 50%;
+  border: 1px solid rgba(37,99,235,.08);
+  animation: ringRotate 18s linear infinite reverse;
+}
+
+/* ─── Animations ─────────────────────────────────────────────────────────── */
+@keyframes fadeSlideUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: none; }
+}
+
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.3; }
+  50%       { opacity: 1; }
+}
+
+@keyframes orbFloat {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-16px); }
+}
+
+@keyframes ringRotate {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* ─── Responsive ─────────────────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .content {
+    grid-template-columns: 1fr;
+    padding-block: 60px;
+  }
+
+  .left { max-width: 100%; }
+
+  .headline { font-size: clamp(36px, 10vw, 52px); }
+
+  .sub { font-size: 16px; }
+}
+
+@media (max-width: 480px) {
+  .headline { font-size: clamp(32px, 11vw, 44px); }
+  .ctas { flex-direction: column; }
+  .ctas .btn { width: 100%; justify-content: center; }
+  .fallbackOrb { width: 220px; height: 220px; }
+  .fallbackRing { width: 300px; height: 300px; }
+  .fallbackRing2 { width: 360px; height: 360px; }
+}

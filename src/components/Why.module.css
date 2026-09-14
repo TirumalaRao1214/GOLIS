@@ -1,0 +1,157 @@
+.section { background: var(--bg-2); }
+
+/* ─── Ecosystem ──────────────────────────────────────────────────────────── */
+.ecosystem {
+  position: relative;
+  width: 380px;
+  height: 380px;
+  margin: 0 auto 80px;
+}
+
+.center {
+  position: absolute;
+  inset: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.centerOrb {
+  width: 100px; height: 100px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, rgba(37,99,235,.4), rgba(37,99,235,.08));
+  border: 1px solid rgba(37,99,235,.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translate(-50%, -50%);
+  animation: orbPulse 3s ease-in-out infinite;
+  box-shadow: 0 0 40px rgba(37,99,235,.2);
+}
+
+.centerLabel {
+  font-size: 14px;
+  font-weight: 900;
+  letter-spacing: -.04em;
+  background: linear-gradient(135deg, #fff, var(--accent-2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.orbitRing {
+  position: absolute;
+  inset: 20px;
+  border-radius: 50%;
+  border: 1px dashed rgba(37,99,235,.25);
+  animation: ringRotate 20s linear infinite;
+}
+
+.node {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform:
+    rotate(var(--angle))
+    translateX(170px)
+    rotate(calc(-1 * var(--angle)));
+  animation: nodeAppear 0.6s ease var(--delay) both;
+}
+
+.nodeDot {
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  background: var(--surface);
+  border: 1px solid var(--border-2);
+  margin: 0 auto 6px;
+  transition: background var(--transition), border-color var(--transition);
+  cursor: default;
+}
+
+.node:hover .nodeDot {
+  background: rgba(37,99,235,.2);
+  border-color: var(--accent-2);
+}
+
+.nodeLabel {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--text-2);
+  text-align: center;
+  white-space: nowrap;
+  transform: translateX(-50%);
+  position: relative;
+  left: 20px;
+}
+
+/* ─── Grid ───────────────────────────────────────────────────────────────── */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 32px 28px;
+  transition: border-color var(--transition), transform var(--transition), background var(--transition);
+}
+
+.card:hover {
+  border-color: rgba(37,99,235,.35);
+  transform: translateY(-3px);
+  background: var(--surface-2);
+}
+
+.cardIcon {
+  font-size: 20px;
+  color: var(--accent-2);
+  margin-bottom: 14px;
+  opacity: .7;
+}
+
+.cardTitle {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+
+.cardDesc {
+  font-size: 14px;
+  color: var(--text-2);
+  line-height: 1.7;
+}
+
+/* ─── Animations ─────────────────────────────────────────────────────────── */
+@keyframes orbPulse {
+  0%, 100% { box-shadow: 0 0 30px rgba(37,99,235,.2); }
+  50%       { box-shadow: 0 0 60px rgba(37,99,235,.4); }
+}
+
+@keyframes ringRotate {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes nodeAppear {
+  from { opacity: 0; transform: rotate(var(--angle)) translateX(140px) rotate(calc(-1 * var(--angle))) scale(0.6); }
+  to   { opacity: 1; transform: rotate(var(--angle)) translateX(170px) rotate(calc(-1 * var(--angle))) scale(1); }
+}
+
+@media (max-width: 900px) {
+  .ecosystem { width: 300px; height: 300px; }
+  .grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 540px) {
+  .ecosystem { display: none; }
+  .grid { grid-template-columns: 1fr; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .orbitRing, .centerOrb { animation: none; }
+  .node { animation: none; opacity: 1; }
+}

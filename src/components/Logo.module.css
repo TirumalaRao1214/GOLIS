@@ -1,0 +1,12 @@
+.logoWrap {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.logoStacked {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
