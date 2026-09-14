@@ -1,14 +1,6 @@
 services:
   - type: web
     name: golis
-    env: static
-    buildCommand: npm install && npm run build
-    staticPublishPath: ./dist
-    routes:
-      - type: rewrite
-        source: /*
-        destination: /index.html
-    headers:
-      - path: /assets/*
-        name: Cache-Control
-        value: public, max-age=31536000, immutable
+    env: docker
+    dockerfilePath: ./Dockerfile
+    plan: free
