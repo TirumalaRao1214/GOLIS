@@ -1,0 +1,68 @@
+================================================================================
+GOLIS 3D - PROJECT IMPLEMENTATION OVERVIEW
+================================================================================
+
+1. PROJECT OVERVIEW
+--------------------------------------------------------------------------------
+GOLIS 3D is a high-performance, responsive single-page marketing website and 
+portfolio for GOLIS (a web development and digital solutions agency).
+
+Tech Stack:
+- Core: React 19, TypeScript, Vite
+- 3D & Visuals: Three.js, @react-three/fiber, @react-three/drei
+- Animations: Framer Motion, GSAP
+- Styling: CSS Modules, Modern CSS Custom Properties (Theme Variables)
+- Deployment / Infrastructure: Docker (Nginx multi-stage), Render (render.yaml)
+
+
+2. CORE ARCHITECTURE & CONFIGURATION
+--------------------------------------------------------------------------------
+- Centralized Data Source (src/config/site.ts):
+  * Brand Identity & Meta (GOLIS, tagline, SEO descriptions)
+  * Contact Info (Email, Phone, WhatsApp triggers with pre-filled messages)
+  * Social Links (Instagram, LinkedIn, YouTube)
+  * Services Data (6 Core services)
+  * Portfolio Showcase Data (3 Projects: Arabian Perfume Lab, Wellness Survey, MGS Guntur)
+  * 4-Step Process Data (Discover -> Design -> Develop -> Launch)
+  * Pricing Plans (Starter, Business, Premium)
+  * FAQ Items (10 Comprehensive Q&As)
+  * Trust Points & Why Node graphs
+
+
+3. 3D HERO EXPERIENCE (src/components/hero/)
+--------------------------------------------------------------------------------
+- HeroScene (Three.js & React Three Fiber):
+  * Dynamic Brand Orb: Icosahedron mesh with MeshDistortMaterial, responding to mouse movement.
+  * Orbital Rings: Multi-axis rotating torus meshes with glow shaders.
+  * Particles Field: Optimized buffer geometry floating points.
+  * Floating Cubes: Interactive wireframe meshes.
+  * Starfield Background: Dynamic depth star layer.
+  * Camera Rig: Parallax mouse tracking camera with lerped smoothing.
+  * Accessibility: Full prefers-reduced-motion detection and mobile fallbacks.
+
+
+4. UI COMPONENTS (src/components/)
+--------------------------------------------------------------------------------
+- Navbar (Navbar.tsx): Sticky navigation header with mobile drawer toggle and links.
+- Hero (hero/Hero.tsx): Dynamic intro with CTA buttons and lazy-loaded 3D canvas.
+- Services (Services.tsx): Card grid displaying agency offerings with SVG icons.
+- Portfolio (Portfolio.tsx): Project showcase cards with tag pills, live URLs, and feature lists.
+- Why (Why.tsx): Business value connection node diagram.
+- Process (Process.tsx): 4-step agency workflow visualization.
+- DemoCTA / FinalCTA: High-converting call-to-action blocks.
+- Pricing (Pricing.tsx): Tiered pricing tables with popular badge and custom feature lists.
+- About (About.tsx): Company background and value proposition.
+- Trust (Trust.tsx): Trust badges and credibility points.
+- FAQ (FAQ.tsx): Collapsible accordion component for common customer queries.
+- Contact (Contact.tsx): Lead inquiry contact form and quick-reach action cards.
+- WhatsAppButton (WhatsAppButton.tsx): Persistent floating direct-to-chat WhatsApp button.
+- Footer (Footer.tsx): Footer links, copyright notice, and social profiles.
+
+
+5. SEO, ASSETS & DEPLOYMENT READY
+--------------------------------------------------------------------------------
+- Production Ready: Configured Vite production bundling and TypeScript type checking.
+- Containerization: Multi-stage Dockerfile using Alpine Nginx with optimized routing.
+- Hosting: Render deployment setup via render.yaml and public/_redirects.
+- SEO & Analytics: robots.txt, sitemap.xml, OpenGraph meta tags, and Google Search Console verification.
+================================================================================
