@@ -99,6 +99,39 @@ export const PORTFOLIO_DATA = [
     url: 'https://arabianperfumelab.onrender.com',
   },
   {
+    id: 'fomo-guntur',
+    title: 'FOMO Guntur',
+    category: 'Local Business / Deals & Events Platform',
+    description:
+      'A vibrant local discovery platform for Guntur — helping residents find the best deals, events and businesses in their city before they miss out.',
+    tags: ['Local Business', 'Deals', 'City Platform'],
+    accent: '#f97316',
+    features: ['Local deals listing', 'Business directory', 'Events showcase', 'Mobile-first design'],
+    url: 'https://fomo-guntur.onrender.com',
+  },
+  {
+    id: 'sri-lakshmi-jewellery',
+    title: 'Sri Lakshmi Jewellery',
+    category: 'Product Catalog / Jewellery Business',
+    description:
+      'An elegant online catalog for a traditional jewellery business — showcasing gold and silver collections with rich visuals and easy customer enquiry.',
+    tags: ['Product Catalog', 'Jewellery', 'WhatsApp'],
+    accent: '#d4a017',
+    features: ['Jewellery catalog', 'WhatsApp enquiry', 'Collection showcase', 'Mobile-first design'],
+    url: 'https://srilakshmijewellery.onrender.com',
+  },
+  {
+    id: 'truemuscle',
+    title: 'Truemuscle',
+    category: 'Fitness / Gym & Supplement Website',
+    description:
+      'A bold, high-energy website for a fitness brand — showcasing gym memberships, supplements and training programmes to drive sign-ups and sales.',
+    tags: ['Fitness', 'Gym', 'Lead Gen'],
+    accent: '#ef4444',
+    features: ['Membership plans', 'Supplement catalog', 'Lead generation', 'Mobile-first design'],
+    url: 'https://truemuscle.onrender.com',
+  },
+  {
     id: 'wellness-survey',
     title: 'Wellness Survey Platform',
     category: 'Health & Wellness / Web Application',
