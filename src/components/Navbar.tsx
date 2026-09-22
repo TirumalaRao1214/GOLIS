@@ -4,7 +4,8 @@ import styles from './Navbar.module.css';
 
 const NAV_LINKS = [
   { label: 'Home', href: '#home' },
-  { label: 'Services', href: '#services' },
+  { label: 'AI Solutions', href: '#ai-solutions' },
+  { label: 'Websites', href: '#services' },
   { label: 'Portfolio', href: '#portfolio' },
   { label: 'Process', href: '#process' },
   { label: 'Pricing', href: '#pricing' },

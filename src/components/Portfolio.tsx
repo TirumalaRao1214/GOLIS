@@ -3,7 +3,7 @@ import { useReveal } from '../hooks';
 import styles from './Portfolio.module.css';
 
 function PortfolioCard({
-  title, category, description, tags, accent, features, url, index,
+  title, category, description, tags, accent, features, url, aiPotential, index,
 }: typeof PORTFOLIO_DATA[number] & { index: number }) {
 
   // Extract hostname for display in browser bar
@@ -57,6 +57,16 @@ function PortfolioCard({
             </li>
           ))}
         </ul>
+
+        {aiPotential && aiPotential.length > 0 && (
+          <div className={styles.aiPotential}>
+            <span className={styles.aiPotentialLabel}>AI Potential:</span>
+            {aiPotential.map((a) => (
+              <span key={a} className={styles.aiTag}>{a}</span>
+            ))}
+            <span className={styles.aiDemo}>Demo</span>
+          </div>
+        )}
 
         <div className={styles.footer}>
           <div className={styles.tags}>

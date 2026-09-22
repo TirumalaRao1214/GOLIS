@@ -40,12 +40,13 @@
 }
 
 .link {
-  padding: 6px 12px;
-  font-size: 13.5px;
+  padding: 6px 10px;
+  font-size: 13px;
   font-weight: 500;
   color: var(--text-2);
   border-radius: 6px;
   transition: color var(--transition), background var(--transition);
+  white-space: nowrap;
 }
 
 .link:hover,

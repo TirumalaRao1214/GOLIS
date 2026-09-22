@@ -107,6 +107,26 @@
   color: var(--text-3);
 }
 
+/* ─── Capability tags ────────────────────────────────────────────────────── */
+.capabilities {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+.capTag {
+  font-size: 12px;
+  font-weight: 600;
+  padding: 5px 12px;
+  border-radius: 100px;
+  background: var(--accent-light);
+  border: 1px solid rgba(37,99,235,.25);
+  color: var(--accent-2);
+  cursor: default;
+}
+
 /* ─── Industry tags ──────────────────────────────────────────────────────── */
 .industries {
   display: flex;

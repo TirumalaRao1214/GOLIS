@@ -185,6 +185,50 @@
 
 .featureCheck { font-weight: 700; }
 
+/* ─── AI potential tags ──────────────────────────────────────────────────── */
+.aiPotential {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 16px;
+  padding: 10px 12px;
+  background: rgba(37, 99, 235, 0.05);
+  border: 1px solid rgba(37, 99, 235, 0.15);
+  border-radius: 8px;
+}
+
+.aiPotentialLabel {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--accent-2);
+  white-space: nowrap;
+}
+
+.aiTag {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 100px;
+  background: var(--accent-light);
+  border: 1px solid rgba(37, 99, 235, 0.25);
+  color: var(--accent-2);
+}
+
+.aiDemo {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  padding: 2px 7px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  margin-left: auto;
+}
+
 .footer {
   display: flex;
   align-items: center;

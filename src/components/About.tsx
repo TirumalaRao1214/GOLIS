@@ -3,11 +3,20 @@ import styles from './About.module.css';
 
 const JOURNEY = [
   'Website',
-  'Product Catalog',
-  'Online Ordering / Booking',
+  'AI-Powered Website',
+  'WhatsApp Automation',
+  'AI Chatbot / Agent',
+  'Custom Application',
+  'Full Business Automation',
+];
+
+const CAPABILITIES = [
+  'Modern Web Development',
+  'AI Solutions',
   'Business Automation',
-  'Web Application',
-  'Mobile Application',
+  'API Integration',
+  'Custom Software',
+  'Mobile Applications',
 ];
 
 export default function About() {
@@ -20,16 +29,21 @@ export default function About() {
           <div className={styles.content}>
             <div className={`reveal`}>
               <div className="eyebrow">About GOLIS</div>
-              <h2 className="section-title">Technology That Makes<br />Business Simpler.</h2>
+              <h2 className="section-title">Technology That Makes<br />Business Smarter.</h2>
               <p className={styles.text}>
-                GOLIS combines software-development expertise with modern web design to create
-                practical digital solutions for businesses. We work with you as a long-term
-                technology partner — not just a one-off developer.
+                GOLIS builds digital experiences, business applications and AI-powered automation
+                for businesses that want to grow, simplify operations and serve customers better.
+                We work with you as a long-term technology partner — not just a one-off developer.
               </p>
               <p className={styles.text}>
-                Your business can start with a simple website today, and grow into a complete
-                digital operation over time.
+                Your business can start with a website today and evolve into a fully automated,
+                AI-powered operation over time.
               </p>
+              <div className={styles.capabilities}>
+                {CAPABILITIES.map((c) => (
+                  <span key={c} className={styles.capTag}>{c}</span>
+                ))}
+              </div>
             </div>
 
             <div className={`${styles.journey} reveal`}>

@@ -11,6 +11,26 @@ const ICONS: Record<string, ReactElement> = {
       <path d="M8 21h8M12 17v4"/>
     </svg>
   ),
+  brain: (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+      <path d="M9.5 2a2.5 2.5 0 015 0" />
+      <path d="M4.5 7.5A2.5 2.5 0 012 10v4a8 8 0 0016 0v-4a2.5 2.5 0 01-2.5-2.5" />
+      <path d="M4.5 7.5h15" />
+      <circle cx="8" cy="14" r="1" fill="currentColor" />
+      <circle cx="12" cy="14" r="1" fill="currentColor" />
+      <circle cx="16" cy="14" r="1" fill="currentColor" />
+    </svg>
+  ),
+  cpu: (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+      <rect x="4" y="4" width="16" height="16" rx="2"/>
+      <rect x="8" y="8" width="8" height="8"/>
+      <line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/>
+      <line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/>
+      <line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/>
+      <line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/>
+    </svg>
+  ),
   edit: (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
       <path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/>
@@ -95,12 +115,12 @@ export default function Services() {
     <section className={`section ${styles.section}`} id="services" ref={sectionRef}>
       <div className="container">
         <div className={`section-header reveal`}>
-          <div className="eyebrow">What We Build</div>
+          <div className="eyebrow">Websites</div>
           <h2 className="section-title">
-            Digital Solutions Built<br />Around Your Business
+            Everything Your Business<br />Needs to Grow Online
           </h2>
           <p className="section-sub">
-            From your first website to advanced business automation — we build what your business needs to grow online.
+            From your first website to AI-powered business applications — GOLIS builds what your business needs.
           </p>
         </div>
 

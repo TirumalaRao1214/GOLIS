@@ -61,13 +61,13 @@ export default function Hero() {
           </div>
 
           <h1 className={styles.headline} id="hero-headline">
-            Websites That<br />
-            <span className={styles.accentText}>Grow Businesses.</span>
+            Build Your Business with<br />
+            <span className={styles.accentText}>Websites + AI</span>
           </h1>
 
           <p className={styles.sub}>
-            We create modern websites and digital solutions that help businesses attract customers,
-            showcase their products and services, and grow online.
+            GOLIS builds high-performance websites, AI agents and business automation
+            that help businesses attract customers, automate repetitive work and operate smarter.
           </p>
 
           <div className={styles.ctas}>
@@ -76,22 +76,22 @@ export default function Hero() {
               className={`btn btn-primary btn-lg ${styles.ctaPrimary}`}
               onClick={(e) => { e.preventDefault(); handleNav('#contact'); }}
             >
-              Get a Free Consultation
+              Build My Solution
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden="true">
                 <path d="M5 12h14M12 5l7 7-7 7" />
               </svg>
             </a>
             <a
-              href="#portfolio"
+              href="#ai-solutions"
               className={`btn btn-ghost btn-lg`}
-              onClick={(e) => { e.preventDefault(); handleNav('#portfolio'); }}
+              onClick={(e) => { e.preventDefault(); handleNav('#ai-solutions'); }}
             >
-              Explore Our Work
+              Explore AI Solutions
             </a>
           </div>
 
-          <div className={styles.trust} aria-label="Key qualities">
-            {['Modern', 'Responsive', 'Fast', 'Business-Focused'].map((item, i) => (
+          <div className={styles.trust} aria-label="Key capabilities">
+            {['Websites', 'AI Agents', 'Automation', 'Business Apps'].map((item, i) => (
               <span key={item} className={styles.trustItem}>
                 {i > 0 && <span className={styles.dot} aria-hidden="true">•</span>}
                 {item}

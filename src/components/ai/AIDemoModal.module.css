@@ -1,0 +1,129 @@
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  animation: fadeIn 0.2s ease;
+}
+
+.modal {
+  background: var(--bg-2);
+  border: 1px solid var(--border-2);
+  border-radius: var(--radius-xl);
+  width: 100%;
+  max-width: 560px;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  animation: slideUp 0.25s cubic-bezier(.34,1.56,.64,1);
+  box-shadow: 0 32px 80px rgba(0, 0, 0, 0.6);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--border);
+}
+
+.titleWrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.aiDot {
+  width: 8px;
+  height: 8px;
+  background: var(--accent-2);
+  border-radius: 50%;
+  box-shadow: 0 0 8px var(--accent-2);
+  animation: pulse 2s infinite;
+}
+
+.title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.close {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  color: var(--text-2);
+  transition: background var(--transition), color var(--transition);
+}
+
+.close:hover {
+  background: var(--surface-2);
+  color: var(--text);
+}
+
+.close svg {
+  width: 16px;
+  height: 16px;
+}
+
+.body {
+  flex: 1;
+  overflow: hidden;
+}
+
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 300px;
+  color: var(--text-3);
+  font-size: 14px;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(30px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 8px var(--accent-2); }
+  50% { box-shadow: 0 0 16px var(--accent-2); }
+}
+
+@media (max-width: 600px) {
+  .backdrop {
+    padding: 12px;
+    align-items: flex-end;
+  }
+
+  .modal {
+    max-height: 80vh;
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .backdrop,
+  .modal {
+    animation: none;
+  }
+
+  .aiDot {
+    animation: none;
+  }
+}

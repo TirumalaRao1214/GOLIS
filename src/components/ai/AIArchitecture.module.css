@@ -1,0 +1,148 @@
+.section {
+  background: var(--bg);
+}
+
+.flow {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.nodeWrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.node {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px 20px;
+  transition: border-color var(--transition), transform var(--transition);
+}
+
+.node:hover {
+  border-color: var(--node-color, var(--border-2));
+  transform: translateX(4px);
+}
+
+.nodeIcon {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  background: rgba(var(--node-color-rgb, 37, 99, 235), 0.1);
+  color: var(--node-color, var(--accent-2));
+  flex-shrink: 0;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.nodeIcon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.nodeLabel {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.nodePulse {
+  position: absolute;
+  right: 20px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--node-color, var(--accent-2));
+  box-shadow: 0 0 8px var(--node-color, var(--accent-2));
+  animation: nodePulse 2.5s infinite;
+}
+
+.connector {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 32px;
+  gap: 0;
+}
+
+.connectorLine {
+  width: 2px;
+  flex: 1;
+  background: linear-gradient(180deg, var(--border-2), var(--border));
+  position: relative;
+  overflow: hidden;
+}
+
+.connectorLine::after {
+  content: '';
+  position: absolute;
+  top: -100%;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  background: linear-gradient(180deg, transparent, var(--accent-2), transparent);
+  animation: flowDown 2s infinite;
+}
+
+.connectorDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--border-2);
+  flex-shrink: 0;
+}
+
+@keyframes nodePulse {
+  0%, 100% { opacity: 0.7; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.3); }
+}
+
+@keyframes flowDown {
+  0% { top: -100%; }
+  100% { top: 200%; }
+}
+
+@media (max-width: 640px) {
+  .node {
+    padding: 14px 16px;
+  }
+
+  .nodeIcon {
+    width: 36px;
+    height: 36px;
+  }
+
+  .nodeLabel {
+    font-size: 13px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nodePulse {
+    animation: none;
+    opacity: 0.7;
+  }
+
+  .connectorLine::after {
+    animation: none;
+    display: none;
+  }
+
+  .node:hover {
+    transform: none;
+  }
+}
