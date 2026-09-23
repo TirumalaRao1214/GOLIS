@@ -4,65 +4,331 @@ GOLIS 3D - PROJECT IMPLEMENTATION OVERVIEW
 
 1. PROJECT OVERVIEW
 --------------------------------------------------------------------------------
-GOLIS 3D is a high-performance, responsive single-page marketing website and 
-portfolio for GOLIS (a web development and digital solutions agency).
+GOLIS 3D is a high-performance, responsive single-page marketing website for
+GOLIS — a technology partner that builds Websites, AI Agents & Business
+Automation for small businesses, startups and growing companies.
+
+Positioning:
+"GOLIS builds high-performance websites, AI agents and business automation
+that help businesses attract customers, automate repetitive work and operate
+smarter."
 
 Tech Stack:
-- Core: React 19, TypeScript, Vite
-- 3D & Visuals: Three.js, @react-three/fiber, @react-three/drei
-- Animations: Framer Motion, GSAP
-- Styling: CSS Modules, Modern CSS Custom Properties (Theme Variables)
-- Deployment / Infrastructure: Docker (Nginx multi-stage), Render (render.yaml)
+- Core:            React 19, TypeScript, Vite
+- 3D & Visuals:    Three.js, @react-three/fiber, @react-three/drei
+- Animations:      Framer Motion, GSAP, CSS keyframes
+- Styling:         CSS Modules, Modern CSS Custom Properties (Theme Variables)
+- Deployment:      Docker (Nginx multi-stage), Render (render.yaml)
+- Code Quality:    oxlint, TypeScript strict mode
 
 
+================================================================================
 2. CORE ARCHITECTURE & CONFIGURATION
---------------------------------------------------------------------------------
-- Centralized Data Source (src/config/site.ts):
-  * Brand Identity & Meta (GOLIS, tagline, SEO descriptions)
-  * Contact Info (Email, Phone, WhatsApp triggers with pre-filled messages)
-  * Social Links (Instagram, LinkedIn, YouTube)
-  * Services Data (6 Core services)
-  * Portfolio Showcase Data (3 Projects: Arabian Perfume Lab, Wellness Survey, MGS Guntur)
-  * 4-Step Process Data (Discover -> Design -> Develop -> Launch)
-  * Pricing Plans (Starter, Business, Premium)
-  * FAQ Items (10 Comprehensive Q&As)
-  * Trust Points & Why Node graphs
+================================================================================
+Centralized Data Source (src/config/site.ts):
+
+  SITE_CONFIG
+  * Brand identity, tagline, description (AI-expanded positioning)
+  * Contact info: phone, email, WhatsApp number + pre-filled message
+  * Social links: Instagram, LinkedIn, YouTube
+  * SEO: title, meta description, OG image, canonical URL
+
+  SERVICES_DATA (6 services)
+  * Business Websites
+  * AI-Powered Websites
+  * WhatsApp Automation
+  * AI Agents
+  * Business Automation
+  * Custom Applications
+
+  AI_SOLUTIONS_DATA (6 AI solution cards)
+  * AI Chatbots
+  * AI WhatsApp Automation
+  * AI Agents
+  * AI Voice Agents
+  * AI Lead Automation
+  * AI Business Automation
+  Each entry: { id, title, description, features[], icon, cta, accent color }
+
+  AI_DEMO_CARDS (4 demo experiences)
+  * AI Website Assistant
+  * AI Sales Assistant
+  * AI Lead Qualification Agent
+  * AI Business Assistant
+  Each entry: { id, title, description, icon, demoType }
+
+  AI_INTEGRATIONS_DATA (8 integrations)
+  * WhatsApp, Google Sheets, SQL Server, REST APIs,
+    CRM Systems, E-commerce, Internal Apps, Databases
+
+  AI_USE_CASES_DATA (4 industry use cases)
+  * Jewellery Shop, Perfume Shop, Gym, Real Estate
+  Each entry: { industry, icon, customerQuery, aiActions[], accent }
+
+  AI_PRICING_DATA (3 AI pricing tiers)
+  * AI Starter, AI Business, AI Custom
+  * All use "Custom pricing" — no hardcoded amounts
+  * Prices configurable here without touching UI components
+
+  PORTFOLIO_DATA (6 projects) — unchanged + aiPotential[] field added
+  * Arabian Perfume Lab, FOMO Guntur, Sri Lakshmi Jewellery,
+    Truemuscle, Wellness Survey, MGS Guntur
+
+  PROCESS_DATA (4 steps)
+  * Discover → Design → Develop → Launch (updated for AI/apps scope)
+
+  PRICING_DATA (3 website pricing tiers)
+  * Starter ₹7,999 / Business ₹14,999 / Premium ₹24,999
+
+  FAQ_DATA (15 Q&As)
+  * 10 original questions + 5 AI-specific additions:
+    What is an AI agent? / Can AI work with WhatsApp? / Can AI access
+    my business data? / How much does an AI solution cost? /
+    Do I need to replace existing software?
+
+  TRUST_FEATURES, WHY_NODES (updated to reflect AI capabilities)
 
 
+================================================================================
 3. 3D HERO EXPERIENCE (src/components/hero/)
---------------------------------------------------------------------------------
-- HeroScene (Three.js & React Three Fiber):
-  * Dynamic Brand Orb: Icosahedron mesh with MeshDistortMaterial, responding to mouse movement.
-  * Orbital Rings: Multi-axis rotating torus meshes with glow shaders.
-  * Particles Field: Optimized buffer geometry floating points.
-  * Floating Cubes: Interactive wireframe meshes.
-  * Starfield Background: Dynamic depth star layer.
-  * Camera Rig: Parallax mouse tracking camera with lerped smoothing.
-  * Accessibility: Full prefers-reduced-motion detection and mobile fallbacks.
+================================================================================
+HeroScene.tsx — Three.js & React Three Fiber:
+  * Dynamic Brand Orb: Icosahedron mesh with MeshDistortMaterial, mouse-reactive
+  * Orbital Rings: Multi-axis rotating torus meshes with glow shaders
+  * Particles Field: Optimized buffer geometry floating points
+  * Floating Cubes: Interactive wireframe meshes
+  * Starfield Background: Dynamic depth star layer
+  * Camera Rig: Parallax mouse tracking with lerped smoothing
+  * Accessibility: prefers-reduced-motion detection, WebGL fallback, mobile fallback
+
+Hero.tsx — Updated messaging:
+  * Headline:     "Build Your Business with Websites + AI"
+  * Sub-text:     AI + automation-focused value proposition
+  * Primary CTA:  "Build My Solution" → #contact
+  * Secondary CTA:"Explore AI Solutions" → #ai-solutions
+  * Trust line:   "Websites • AI Agents • Automation • Business Apps"
 
 
-4. UI COMPONENTS (src/components/)
---------------------------------------------------------------------------------
-- Navbar (Navbar.tsx): Sticky navigation header with mobile drawer toggle and links.
-- Hero (hero/Hero.tsx): Dynamic intro with CTA buttons and lazy-loaded 3D canvas.
-- Services (Services.tsx): Card grid displaying agency offerings with SVG icons.
-- Portfolio (Portfolio.tsx): Project showcase cards with tag pills, live URLs, and feature lists.
-- Why (Why.tsx): Business value connection node diagram.
-- Process (Process.tsx): 4-step agency workflow visualization.
-- DemoCTA / FinalCTA: High-converting call-to-action blocks.
-- Pricing (Pricing.tsx): Tiered pricing tables with popular badge and custom feature lists.
-- About (About.tsx): Company background and value proposition.
-- Trust (Trust.tsx): Trust badges and credibility points.
-- FAQ (FAQ.tsx): Collapsible accordion component for common customer queries.
-- Contact (Contact.tsx): Lead inquiry contact form and quick-reach action cards.
-- WhatsAppButton (WhatsAppButton.tsx): Persistent floating direct-to-chat WhatsApp button.
-- Footer (Footer.tsx): Footer links, copyright notice, and social profiles.
+================================================================================
+4. AI COMPONENTS (src/components/ai/)  ← NEW
+================================================================================
+
+AISolutions.tsx + AISolutions.module.css
+  * Section ID: #ai-solutions
+  * Eyebrow: "GOLIS AI" | Headline: "Make Your Business AI-Powered"
+  * 3-column responsive grid of AISolutionCard components
+  * CTA: "Find the Right AI for My Business" → #ai-business-builder
+
+AISolutionCard.tsx + AISolutionCard.module.css
+  * Reusable card: icon, title, description, feature list, accent color
+  * CTA links to pre-filled WhatsApp using site.ts contact config
+  * Hover: card lift + glow effect using CSS custom property --card-accent
+
+AILab.tsx + AILab.module.css
+  * Section ID: #ai-lab | Eyebrow: "GOLIS AI LAB"
+  * Headline: "Experience AI Before You Buy It"
+  * 4 demo cards with "Try Demo" button → opens AIDemoModal
+  * "Demo" badge on each card to clearly indicate non-production status
+
+AIDemoModal.tsx + AIDemoModal.module.css
+  * Accessible role="dialog" aria-modal modal overlay
+  * Lazy-loads AIChatDemo on open (zero cost until triggered)
+  * Keyboard: Escape to close; backdrop click to close
+  * Mobile: slides up from bottom on small screens
+  * Animated AI status dot pulse
+
+AIChatDemo.tsx + AIChatDemo.module.css
+  * Full chat UI: message bubbles, typing indicator, suggested questions
+  * Calls aiDemoService.getDemoResponse() — mock today, real API tomorrow
+  * Disclaimer: "Demo mode — responses are simulated examples"
+  * Scrolls to latest message automatically
+  * Disabled state while AI is "typing"
+
+AIBusinessBuilder.tsx + AIBusinessBuilder.module.css
+  * Section ID: #ai-business-builder
+  * Headline: "Not Sure What AI Can Do for Your Business?"
+  * 4-step multi-select questionnaire:
+      Step 1: Business type (11 options)
+      Step 2: What to automate (10 multi-select options)
+      Step 3: How customers contact you (7 options)
+      Step 4: Daily enquiry volume (4 options)
+  * Step 5: Generated AI solution summary based on answers
+  * Result opens WhatsApp with pre-filled message containing all answers
+  * Uses buildWhatsAppUrl() from hooks + SITE_CONFIG.contact.whatsapp
+
+AIArchitecture.tsx + AIArchitecture.module.css
+  * Section ID: #ai-architecture | Eyebrow: "How It Works"
+  * Animated vertical flow diagram: 7 nodes
+    Customer → Website/WhatsApp/Voice → AI Agent →
+    Knowledge Base → Business Tools → Database/CRM/APIs → Business Action
+  * Glowing node pulse animation (respects prefers-reduced-motion)
+  * Animated flow line between nodes
+
+AIUseCases.tsx + AIUseCases.module.css
+  * Section ID: #ai-use-cases | Eyebrow: "Real Examples"
+  * Tabbed industry use cases: Jewellery / Perfume / Gym / Real Estate
+  * Each case shows customer query + AI action steps with animation
+  * Clearly shows AI working through a real conversation scenario
+
+AIIntegrations.tsx + AIIntegrations.module.css
+  * Section ID: #ai-integrations | Eyebrow: "Integrations"
+  * Headline: "AI That Works With Your Business"
+  * 2×4 grid of integration cards with icons and hover accent colors
+  * Covers: WhatsApp, Google Sheets, SQL Server, REST APIs,
+    CRM, E-commerce, Internal Apps, Databases
+
+AIPricing.tsx + AIPricing.module.css
+  * Section ID: #ai-pricing | Eyebrow: "AI Pricing"
+  * 3-card pricing grid: AI Starter / AI Business / AI Custom
+  * All display "Custom pricing" — no hardcoded amounts
+  * Each CTA links to WhatsApp with plan-specific pre-filled message
+  * Suitable-for lists driven entirely from AI_PRICING_DATA in site.ts
 
 
-5. SEO, ASSETS & DEPLOYMENT READY
---------------------------------------------------------------------------------
-- Production Ready: Configured Vite production bundling and TypeScript type checking.
-- Containerization: Multi-stage Dockerfile using Alpine Nginx with optimized routing.
-- Hosting: Render deployment setup via render.yaml and public/_redirects.
-- SEO & Analytics: robots.txt, sitemap.xml, OpenGraph meta tags, and Google Search Console verification.
+================================================================================
+5. AI SERVICES LAYER (src/services/ai/)  ← NEW
+================================================================================
+aiDemoService.ts
+  * DemoType: 'chat' | 'sales' | 'lead' | 'business'
+  * getDemoConfig(type) — returns welcome message + suggested questions
+  * getDemoResponse(type, userMessage) — mock responses with realistic delay
+  * createMessage(role, content) — creates ChatMessage with id + timestamp
+  * Architecture note: replace getDemoResponse() body with a fetch() call to
+    GOLIS backend API when real AI integration is ready
+  * Security: NO API keys in this file or any frontend code
+    Frontend → GOLIS Backend API → AI Provider / MCP / Database
+
+
+================================================================================
+6. NAVIGATION (src/components/Navbar.tsx)
+================================================================================
+Nav links (8 items):
+  Home | AI Solutions | Websites | Portfolio | Process | Pricing | About | Contact
+
+Mobile drawer: existing implementation preserved, all 8 links visible
+Active section detection via IntersectionObserver (unchanged)
+
+
+================================================================================
+7. UPDATED UI COMPONENTS (src/components/)
+================================================================================
+
+About.tsx
+  * Headline: "Technology That Makes Business Smarter"
+  * Expanded description: AI, automation, custom software, mobile apps
+  * New capability tag pills: Modern Web Dev / AI Solutions / Business
+    Automation / API Integration / Custom Software / Mobile Applications
+  * Digital Journey updated: Website → AI-Powered Website → WhatsApp
+    Automation → AI Chatbot/Agent → Custom Application → Full Business Automation
+
+FinalCTA.tsx
+  * Headline: "Ready to Build a Smarter Business?"
+  * Description: covers website, AI assistant, automation, business applications
+  * Buttons: "Start a Project" + "Talk on WhatsApp"
+
+Portfolio.tsx
+  * Added aiPotential[] field rendering on each card where populated
+  * AI tags displayed with blue accent, "Demo" badge (conceptual label)
+  * All existing project data, URLs and features unchanged
+
+Services.tsx
+  * 6 updated services: Business Websites, AI-Powered Websites,
+    WhatsApp Automation, AI Agents, Business Automation, Custom Applications
+  * Added brain + cpu SVG icons
+  * Section header: "Everything Your Business Needs to Grow Online"
+
+Hero.tsx
+  * All changes described in section 3 above
+
+Navbar.tsx / Navbar.module.css
+  * Added "AI Solutions" link (#ai-solutions)
+  * "Services" renamed to "Websites" (#services)
+  * Reduced link font-size slightly to 13px to accommodate 8 items cleanly
+
+
+================================================================================
+8. SEO & METADATA (index.html)
+================================================================================
+  Title:       "GOLIS | Websites, AI Agents & Business Automation"
+  Description: "GOLIS builds modern business websites, AI agents, chatbots,
+               WhatsApp automation and custom business applications..."
+  Keywords:    AI agents, AI chatbot development, business automation,
+               WhatsApp automation, AI website development, custom software
+               development, website design India, AI solutions India
+  OG Title:    Same as title
+  OG Desc:     Same as description
+  Twitter:     Updated to match
+  Schema.org:  Added "knowsAbout" array for AI/automation services
+
+
+================================================================================
+9. PERFORMANCE & ARCHITECTURE NOTES
+================================================================================
+  * All 7 AI sections are lazy-loaded via React.lazy() + Suspense
+  * Each AI section compiles to its own small JS chunk (2–10 kB gzipped)
+  * AIChatDemo is lazy-loaded inside AIDemoModal (zero cost until demo opened)
+  * Main bundle unchanged — Three.js/Hero still the largest chunk (~327 kB gz)
+  * Build: TypeScript 0 errors, oxlint 0 warnings on all new files
+  * prefers-reduced-motion respected in all new animations
+  * All modals trap focus, support Escape key, aria-modal role
+
+
+================================================================================
+10. DEPLOYMENT
+================================================================================
+  * GitHub: https://github.com/TirumalaRao1214/GOLIS (branch: master)
+  * Render: render.yaml — static site, buildCommand: npm install && npm run build
+  * Render auto-deploys on push to master
+  * Docker: existing Nginx multi-stage Dockerfile unchanged
+  * To preview locally: npm run dev  OR  npm run build && npm run preview
+
+
+================================================================================
+11. FOLDER STRUCTURE
+================================================================================
+src/
+├── App.tsx                        # Main app — all sections wired here
+├── main.tsx
+├── index.css / App.css
+│
+├── config/
+│   └── site.ts                    # ALL customer-facing data lives here
+│
+├── components/
+│   ├── ai/                        ← NEW — all AI feature components
+│   │   ├── AISolutions.tsx / .module.css
+│   │   ├── AISolutionCard.tsx / .module.css
+│   │   ├── AILab.tsx / .module.css
+│   │   ├── AIDemoModal.tsx / .module.css
+│   │   ├── AIChatDemo.tsx / .module.css
+│   │   ├── AIBusinessBuilder.tsx / .module.css
+│   │   ├── AIArchitecture.tsx / .module.css
+│   │   ├── AIIntegrations.tsx / .module.css
+│   │   ├── AIUseCases.tsx / .module.css
+│   │   └── AIPricing.tsx / .module.css
+│   │
+│   ├── hero/
+│   │   ├── Hero.tsx               # Updated messaging
+│   │   ├── Hero.module.css
+│   │   └── HeroScene.tsx          # Unchanged 3D scene
+│   │
+│   ├── chatbot/                   # Existing chatbot (unchanged)
+│   │   └── Chatbot.tsx / etc.
+│   │
+│   ├── Navbar.tsx                 # Updated links
+│   ├── Services.tsx               # Updated services + icons
+│   ├── Portfolio.tsx              # AI potential tags added
+│   ├── About.tsx                  # Expanded AI positioning
+│   ├── FinalCTA.tsx               # Updated messaging
+│   └── ... (all other existing components unchanged)
+│
+├── services/
+│   └── ai/
+│       └── aiDemoService.ts       ← NEW — mock AI service layer
+│
+├── hooks/
+│   └── index.ts                   # Unchanged
+│
+└── styles/
+    └── globals.css                # Unchanged
 ================================================================================
